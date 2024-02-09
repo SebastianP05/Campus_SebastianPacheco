@@ -4,13 +4,17 @@ def registrar_participante(participantes_agosto):
     nombre = input("Ingrese el nombre del participante: ")
     edad = input("Ingrese la edad del participante: ")
     cargo = input("Ingrese el cargo del participante: ")
+    pagado = input("¿Ha pagado el aporte? (Sí/No): ").lower()
+    while pagado not in ["sí", "no"]:
+        print("Por favor, responda con 'Sí' o 'No'.")
+        pagado = input("¿Ha pagado el aporte? (Sí/No): ").lower()
 
     participante = {
         'documento': documento,
         'nombre': nombre,
         'edad': edad,
         'cargo': cargo,
-        'pagado': False  # Nuevo campo para indicar si el participante ha pagado el aporte
+        'pagado': True if pagado == "sí" else False
     }
 
     participantes_agosto.append(participante)
@@ -23,7 +27,6 @@ def registrar_participante(participantes_agosto):
     print("Aporte pagado:", "Sí" if participante['pagado'] else "No")
 
     return participantes_agosto
-
 
 def quitar_participante(participantes_agosto):
     documento_a_eliminar = input("Ingrese el número de documento del participante a eliminar: ")
