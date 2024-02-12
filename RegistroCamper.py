@@ -1,7 +1,6 @@
 import json
 
 def gestionar_estado_camper(camper):
-
     print("Estados disponibles:")
     print("1. En proceso de ingreso")
     print("2. Inscrito")
@@ -67,16 +66,10 @@ def registrar_camper(campers):
     guardar_en_archivo(campers, 'campers.json')  
     return campers
 
-def guardar_en_archivo(data, filename):
-    with open(filename, 'w') as file:
-        json.dump(data, file, indent=2)
-
-def cargar_desde_archivo(filename):
-    try:
-        with open(filename, 'r') as file:
-            data = json.load(file)
-        return data
-    except FileNotFoundError:
-        return []
+def guardar_en_archivo(campers, nombre_archivo):
+    with open(nombre_archivo, 'w') as file:
+        json.dump(campers, file)
 
 nombre_archivo = 'campers.json'
+campers = []
+campers = registrar_camper(campers)
