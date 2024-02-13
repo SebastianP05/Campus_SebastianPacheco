@@ -100,3 +100,12 @@ def reservar_plaza(id_parque):
                     print("Formato incorrecto. Por favor ingrese una fecha en dd/mm/aaaa.")
             clientes = Clientes()
             nombre = input("\nNombre del cliente: ")
+            apellido = input("Apellido del cliente: ")
+            dni = input("DNI del cliente: ")
+            email = input("Email del cliente: ")
+            telefono = input("Teléfono del cliente: ")
+            clientes.agregarCliente(nombre,apellido,dni,email,telefono)
+            camperos[id_parque-1].reservarPlaza(clientes, fecha_inicio, fecha_fin)
+            print("\nLa plaza ha sido reservada correctamente.\n")
+        except ValueError:
+            print("Formato incorrecto. Por favor ingrese una fecha en dd/mm/aaaa.")                                                                     
