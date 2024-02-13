@@ -1,0 +1,13 @@
+[{
+    "tipo": "Perro", 
+    "Npatas":"4",
+    "raza":"labrador"
+},{
+    "tipo": "Conejo",
+    "Npatas":"4",
+    "raza":"Mitsu"  
+},{
+    "tipo": "Gato", 
+    "Npatas":"1",
+    "raza":"Esfinge"
+}]
