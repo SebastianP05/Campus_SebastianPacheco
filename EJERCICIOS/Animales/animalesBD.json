@@ -1,0 +1,12 @@
+[
+    {
+        "tipo": "Pez",
+        "nPatas": 0,
+        "Raza": "Mojarra"
+    },
+    {
+        "tipo": "Gato",
+        "nPatas": 3,
+        "Raza": "Angora"
+    }
+]
