@@ -1,7 +1,4 @@
-import Camper
-
 def main_menu():
-
     print("********************************************")
     print("Bienvenido a CAMPUSLANDS.")
     print("**********************************************")
@@ -33,8 +30,6 @@ def main_menu():
         print('********************************')
         return
 
-main_menu()
-
 def menu_camper():
     print("********************")
     print("Bienvenido Camper.")
@@ -55,9 +50,8 @@ def menu_camper():
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break
-
+            
         elif accion == 2:
-
             print("******************************")
             id_camper = input("Ingrese el ID del camper que desea gestionar: ")
             print("**********************************************************")
@@ -66,7 +60,6 @@ def menu_camper():
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break
-
         elif accion == 3:
             # Lógica para la opción 3
             pass
@@ -77,3 +70,9 @@ def menu_camper():
             main_menu()
         else:
             print("Opción no válida. Inténtalo de nuevo.")
+
+# Importa el módulo Camper después de definir todas las funciones
+import Camper
+
+# Llama a la función principal
+main_menu()
