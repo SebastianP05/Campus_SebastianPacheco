@@ -1,30 +1,41 @@
-import campers 
+import FuCampers 
 
 def menu_camper():
     print("********************")
     print("Bienvenido Camper.")
     print("********************")
-    accion = input("\n¿Qué deseas hacer?\n" +
-                   "A. Registrarte.\n" +
-                   "B. Actualizar estado.\n" +
-                   "C. Reservar plaza en un parque.\n" +
-                   "D. Cancelar reserva.\n" +
-                   "E. Salir al menú principal.\n")
+    while True:
+        accion = int(input("¿Qué deseas hacer?\n" +
+                           "1. Registrarte.\n" +
+                           "2. Actualizar estado.\n" +
+                           "3. Reservar plaza en un parque.\n" +
+                           "4. Cancelar reserva.\n" +
+                           "5. Salir al menú principal.\n"))
+        if accion == 1:
+            print("*********************************")
+            nombre_archivo = 'campers.json'
+            campers = []
+            FuCampers.registrar_camper(campers, nombre_archivo)
+            print("************************************")
 
-    if accion == "A":
-        print("*********************************")
-        campers.registrar_camper(campers.campers)
-    elif accion == "2":
-        campers.gestionar_estado_camper(campers.camper)
-    elif accion == "3":
-        reservacion_plazas()
-    elif accion == "4": 
-        cancelar_reserva()
-    elif accion == "5":
-        main_menu()
-    else:
-        print('\nError, por favor elija una opción válida.\n')
-        menu_camper()
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break  # Salir del bucle si la respuesta no es 'Sí'
+        elif accion == 2:
+            FuCampers.gestionar_y_guardar_estado_camper
+            pass
+        elif accion == 3:
+            # Lógica para la opción 3
+            pass
+        elif accion == 4:
+            # Lógica para la opción 4
+            pass
+        elif accion == 5:
+            # Lógica para la opción 5
+            break  # Salir del bucle si se elige la opción 5
+        else:
+            print("Opción no válida. Inténtalo de nuevo.")
+
 
 def menu_trainer():
     # Definir el menú del Trainer aquí
