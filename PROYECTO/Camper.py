@@ -1,5 +1,45 @@
-
 import json
+
+def menu_camper():
+    print("********************")
+    print("Bienvenido Camper.")
+    print("********************")
+    while True:
+        accion = int(input("¿Qué deseas hacer?\n" +
+                           "1. Registrarte.\n" +
+                           "2. Actualizar estado.\n" +
+                           "3. Reservar plaza en un parque.\n" +
+                           "4. Cancelar reserva.\n" +
+                           "5. Salir al menú principal.\n"))
+        if accion == 1:
+            print("*********************************")
+            nombre_archivo = 'campers.json'
+            campers = []
+            registrar_camper(campers, nombre_archivo)
+            print("************************************")
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break
+        elif accion == 2:
+            print("******************************")
+            id_camper = input("Ingrese el ID del camper que desea gestionar: ")
+            gestionar_y_guardar_estado_camper(id_camper, nombre_archivo='campers.json')
+            print("******************************")
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break
+        elif accion == 3:
+            # Lógica para la opción 3
+            pass
+        elif accion == 4:
+            # Lógica para la opción 4
+            pass
+        elif accion == 5:
+            salir = input("¿Estás seguro que deseas salir? (Sí/No): ").lower()
+            if salir != 'si':
+                break
+        else:
+            print("Opción no válida. Inténtalo de nuevo.")
 
 def registrar_camper(campers, nombre_archivo):
     
@@ -81,5 +121,16 @@ def gestionar_y_guardar_estado_camper(id_camper, nombre_archivo='campers.json'):
 
     with open(nombre_archivo, 'w') as file:
         json.dump(campers, file)
+
+
+
+
+def menu_trainer():
+    # Definir el menú del Trainer aquí
+    pass
+
+def menu_coordinador():
+    # Definir el menú del Coordinador aquí
+    pass
 
 
