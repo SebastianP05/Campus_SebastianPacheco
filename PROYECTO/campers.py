@@ -1,4 +1,39 @@
+
 import json
+
+def registrar_camper(campers, nombre_archivo):
+    id = input("Ingrese el número de identificación del camper: ")
+    nombre = input("Ingrese el nombre del camper: ")
+    apellido = input("Ingrese el apellido del camper: ")
+    direccion = input("Ingresa la dirección del camper: ")
+    acudiente = input("Ingrese el nombre del acudiente: ")
+    telefono = input("Ingrese el número de teléfono del camper: ")
+
+    camper = {
+        'ID': id,
+        'Nombre': nombre,
+        'Apellido': apellido,
+        'Direccion': direccion,
+        'Acudiente': acudiente,
+        'Telefono': telefono,
+        'Estado': 'En proceso de ingreso',
+    }
+
+    campers.append(camper)
+
+    print("Camper registrado exitosamente.")
+    print("ID:", camper['ID'])
+    print("Nombre:", camper['Nombre'])
+    print("Apellido:", camper['Apellido'])
+    print("Dirección:", camper['Direccion'])
+    print("Acudiente:", camper['Acudiente'])
+    print("Teléfono:", camper['Telefono'])
+    print("Estado:", camper['Estado'])
+
+    camper = gestionar_estado_camper(camper)
+
+    guardar_en_archivo(campers, nombre_archivo)  
+    return campers
 
 def gestionar_estado_camper(camper):
     print("Estados disponibles:")
@@ -32,45 +67,11 @@ def gestionar_estado_camper(camper):
 
     return camper
 
-def registrar_camper(campers):
-    id = input("Ingrese el número de identificación del camper: ")
-    nombre = input("Ingrese el nombre del camper: ")
-    apellido = input("Ingrese el apellido del camper: ")
-    direccion = input("Ingresa la direccion del camper: ")
-    acudiente = input("Ingrese el nombre del acudiente: ")
-    telefono = input("Ingrese el numero de teléfono del camper: ")
-
-    camper = {
-        'ID': id,
-        'Nombre': nombre,
-        'Apellido': apellido,
-        'Direccion': direccion,
-        'Acudiente': acudiente,
-        'Telefono': telefono,
-        'Estado': 'En proceso de ingreso',
-    }
-
-    campers.append(camper)
-
-    print("Camper registrado exitosamente.")
-    print("ID:", camper['ID'])
-    print("Nombre:", camper['Nombre'])
-    print("Apellido:", camper['Apellido'])
-    print("Dirección:", camper['Direccion'])
-    print("Acudiente:", camper['Acudiente'])
-    print("Teléfono:", camper['Telefono'])
-    print("Estado:", camper['Estado'])
-
-    camper = gestionar_estado_camper(camper)
-
-    guardar_en_archivo(campers, 'campers.json')  
-    return campers
-
 def guardar_en_archivo(campers, nombre_archivo):
     with open(nombre_archivo, 'w') as file:
         json.dump(campers, file)
 
 nombre_archivo = 'campers.json'
 campers = []
-campers = registrar_camper(campers)
+campers = registrar_camper(campers, nombre_archivo)
 print(campers)
