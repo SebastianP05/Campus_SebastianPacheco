@@ -1,20 +1,21 @@
-import RegistroCamper
+import campers 
 
 def menu_camper():
     print("********************")
     print("Bienvenido Camper.")
     print("********************")
     accion = input("\n¿Qué deseas hacer?\n" +
-                   "1. Registrarte.\n" +
-                   "2. Actualizar estado.\n" +
-                   "3. Reservar plaza en un parque.\n" +
-                   "4. Cancelar reserva.\n" +
-                   "5. Salir al menú principal.\n")
+                   "A. Registrarte.\n" +
+                   "B. Actualizar estado.\n" +
+                   "C. Reservar plaza en un parque.\n" +
+                   "D. Cancelar reserva.\n" +
+                   "E. Salir al menú principal.\n")
 
-    if accion == "1":
-        RegistroCamper.registrar_camper(RegistroCamper.campers)
+    if accion == "A":
+        print("*********************************")
+        campers.registrar_camper(campers.campers)
     elif accion == "2":
-        RegistroCamper.gestionar_estado_camper(RegistroCamper.camper)
+        campers.gestionar_estado_camper(campers.camper)
     elif accion == "3":
         reservacion_plazas()
     elif accion == "4": 
