@@ -33,7 +33,7 @@ def main_menu():
         print('********************************')
         return
 
-main_menu()
+from Camper import registrar_camper
 
 def menu_camper():
     print("********************")
@@ -42,10 +42,7 @@ def menu_camper():
     while True:
         accion = int(input("¿Qué deseas hacer?\n" +
                            "\n1. Registrarte.\n" +
-                           "2. Actualizar estado.\n" +
-                           "3. Reservar plaza en un parque.\n" +
-                           "4. Cancelar reserva.\n" +
-                           "5. Salir al menú principal.\n"))
+                           "2. Salir al menú principal.\n"))
         if accion == 1:
 
             print("*********************************")
@@ -55,25 +52,34 @@ def menu_camper():
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break
-
         elif accion == 2:
-
-            print("******************************")
-            id_camper = input("Ingrese el ID del camper que desea gestionar: ")
-            print("**********************************************************")
-            Camper.gestionar_y_guardar_estado_camper(id_camper, nombre_archivo='campers.json')
-            print("******************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break
-
-        elif accion == 3:
-            # Lógica para la opción 3
-            pass
-        elif accion == 4:
-            # Lógica para la opción 4
-            pass
-        elif accion == 5:
             main_menu()
         else:
             print("Opción no válida. Inténtalo de nuevo.")
+
+#def menu_trainer():#
+
+def menu_coordinador():
+    print("***********************")
+    print("Bienvenido Coordinador.")
+    print("***********************")
+    while True:
+        accion = int(input("¿Qué deseas hacer?\n" +
+                           "\n1. Cambiar estado del camper.\n" +
+                           "2. Salir al menú principal.\n"))
+        if accion == 1:
+            print("******************************")
+            id_camper = input("Ingrese el ID del camper que desea gestionar: ")
+            print("**********************************************************")
+            nombre_archivo='campers.json'
+            gestionar_y_guardar_estado_camper(id_camper, nombre_archivo)
+            print("******************************")
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break    
+        elif accion == 2:
+            main_menu()
+        else:
+            print("Opción no válida. Inténtalo de nuevo.")
+
+from Coordinador import gestionar_y_guardar_estado_camper
