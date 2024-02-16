@@ -66,7 +66,7 @@ def menu_coordinador():
     while True:
         accion = int(input("¿Qué deseas hacer?\n" +
                            "\n1. Cambiar estado del camper.\n" +
-                           "2. Salir al menú principal.\n"))
+                           "2. Calificacion camper.\n"))
         if accion == 1:
             print("******************************")
             id_camper = input("Ingrese el ID del camper que desea gestionar: ")
@@ -78,8 +78,10 @@ def menu_coordinador():
             if volver_al_menu != 'si':
                 break    
         elif accion == 2:
-            main_menu()
-        else:
-            print("Opción no válida. Inténtalo de nuevo.")
-
+            calificar_campers('ID_DEL_CAMPER', 'campers.json')
+        
+        elif accion == 3:
+            print('mondongo')
+            
 from Coordinador import gestionar_y_guardar_estado_camper
+from Coordinador import calificar_campers

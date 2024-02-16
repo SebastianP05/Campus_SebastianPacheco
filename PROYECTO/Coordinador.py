@@ -49,4 +49,38 @@ def gestionar_y_guardar_estado_camper(id_camper, nombre_archivo):
     with open(nombre_archivo, 'w') as file:
         json.dump(campers, file)
 
+def calificar_campers(id_camper, nombre_archivo):
+    nombre_archivo='campers.json'
+    with open(nombre_archivo, 'r') as file:
+        campers = json.load(file)
+
+    camper_encontrado = None
+    for camper in campers:
+        if camper['ID'] == id_camper:
+            camper_encontrado = camper
+            break
+
+    if camper_encontrado is not None:
+        
+        if camper_encontrado['Estado'] == 'Aprobado':
+            print("El camper ya está aprobado.")
+            return
+
+        nota_teoria = float(input("Ingrese la nota teórica del camper: "))
+        nota_practica = float(input("Ingrese la nota práctica del camper: "))
+
+        promedio = (nota_teoria + nota_practica) / 2
+
+        if promedio >= 60:
+            camper_encontrado['Estado'] = 'Aprobado'
+            print("El camper ha sido aprobado con un promedio de", promedio)
+        else:
+            print("El camper no ha alcanzado el promedio necesario para aprobar.")
+
+    else:
+        print(f"No se encontró un camper con el ID {id_camper}.")
+
+    with open(nombre_archivo, 'w') as file:
+        json.dump(campers, file)
+
 
