@@ -1,4 +1,3 @@
-import json
 
 def main_menu():
 
@@ -66,7 +65,8 @@ def menu_trainer():
 
         accion = int(input("¿Qué deseas hacer?\n" +
                            "\n1. Agregar rutas y asignar camper.\n" +
-                           "2. Evaluar campers.\n"))
+                           "2. Evaluar campers.\n" +
+                           "3. Salir al menú principal.\n"))
         if accion == 1:
               
                 print("********************************")
@@ -84,12 +84,12 @@ def menu_trainer():
                 if volver_al_menu != 'si':
                     break
         elif accion == 2:
+                evaluar_campers()
+        elif accion == 3:
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break
                 
-                evaluar_campers(campers_list)
-                
-with open('campers.json', 'r') as file:
-                campers_list = json.load(file)
-
 from Trainer import  agregar_rutas_y_asignar_campers
 from Trainer import evaluar_campers
 
@@ -101,7 +101,8 @@ def menu_coordinador():
     while True:
         accion = int(input("¿Qué deseas hacer?\n" +
                            "\n1. Cambiar estado del camper.\n" +
-                           "2. Calificacion camper.\n"))
+                           "2. Calificacion camper.\n" +
+                           "3. Salir al menu principal."))
         if accion == 1:
             print("******************************")
             id_camper = input("Ingrese el ID del camper que desea gestionar: ")
@@ -120,8 +121,10 @@ def menu_coordinador():
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break    
+        elif accion == 3:
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break
         
-
-            
 from Coordinador import gestionar_y_guardar_estado_camper
 from Coordinador import calificar_campers

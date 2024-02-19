@@ -1,9 +1,12 @@
 import json
 
 def agregar_rutas_y_asignar_campers():
-    # Agregar nuevas rutas
+    
     with open('rutas.json', 'r') as file:
         rutas_existentes = json.load(file)
+
+    if not isinstance(rutas_existentes, list):
+        rutas_existentes = []
 
     nueva_ruta = {
         "nombre": "Nueva Ruta",
@@ -17,7 +20,7 @@ def agregar_rutas_y_asignar_campers():
         "sgdb_principal": "Mysql",
         "sgdb_alternativo": "Postgresql",
         "capacidad_maxima": 33,
-        "campers": []  # Agrega una lista para almacenar los campers asignados a esta ruta
+        "campers": []  
     }
 
     rutas_existentes.append(nueva_ruta)
@@ -33,7 +36,7 @@ def agregar_rutas_y_asignar_campers():
 
     camper_encontrado = None
     for camper in campers:
-        if camper['id'] == camper_id:
+        if camper['ID'] == camper_id:
             camper_encontrado = camper
             break
 
@@ -52,9 +55,6 @@ def agregar_rutas_y_asignar_campers():
         print(f"El camper {camper_encontrado['nombre']} ha sido asignado a la ruta {ruta_asignada}")
     else:
         print(f"No hay rutas disponibles para el camper {camper_encontrado['nombre']}")
-
-# Ejemplo de uso
-agregar_rutas_y_asignar_campers()
 
 
 def dirigir_rutas(rutas, horarios):
@@ -80,34 +80,34 @@ horarios_rutas = {
     
 }
 
-dirigir_rutas(horarios_rutas)
+def evaluar_campers():
+    with open('campers.json', 'r') as file:
+        campers = json.load(file)
 
-import json
-
-def evaluar_campers(campers):
     for camper in campers:
-        
-        nota_teorica = int(input("Por favor ingresa la nota teorica."))
-        nota_practica = int(input("Por favor ingresa la nota practica."))
+       camper_id = input(f"Ingrese el ID del camper {camper['nombre']}: ")
 
-        promedio_ponderado = (nota_teorica * 0.3) + (nota_practica * 0.6)
+    if camper['ID'] == camper_id:
 
-        camper['nota_teorica'] = nota_teorica
-        camper['nota_practica'] = nota_practica
-        camper['promedio_ponderado'] = promedio_ponderado
+            nota_teorica = int(input("Por favor ingresa la nota teórica: "))
+            nota_practica = int(input("Por favor ingresa la nota práctica: "))
 
-        
-        if promedio_ponderado >= 60:
-            camper['estado_modulo'] = 'Aprobado'
-        else:
-            camper['estado_modulo'] = 'Reprobado'
+            promedio_ponderado = (nota_teorica * 0.3) + (nota_practica * 0.6)
+
+            camper['nota_teorica'] = nota_teorica
+            camper['nota_practica'] = nota_practica
+            camper['promedio_ponderado'] = promedio_ponderado
+
+            if promedio_ponderado >= 60:
+                camper['estado_modulo'] = 'Aprobado'
+            else:
+                camper['estado_modulo'] = 'Reprobado'
+
+            print(f"Notas asignadas al camper {camper['Nombre']} (ID: {camper['ID']})")
+    else:
+        print(f"No se encontró un camper con el ID {camper_id}")
 
     with open('campers.json', 'w') as file:
         json.dump(campers, file, indent=2)
-
-with open('campers.json', 'r') as file:
-    campers_list = json.load(file)
-
-evaluar_campers(campers_list)
 
 

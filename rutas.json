@@ -1,5 +1,72 @@
-{
-    "NodeJs":[],
-    "Java":[],
-    "NetCore":[]
-}
+[
+  {
+    "nombre": "Nueva Ruta",
+    "cursos": [
+      "Fundamentos de programaci\u00f3n",
+      "Programaci\u00f3n Web",
+      "Programaci\u00f3n formal",
+      "Bases de datos",
+      "Backend"
+    ],
+    "sgdb_principal": "Mysql",
+    "sgdb_alternativo": "Postgresql",
+    "capacidad_maxima": 33,
+    "campers": []
+  },
+  {
+    "nombre": "Nueva Ruta",
+    "cursos": [
+      "Fundamentos de programaci\u00f3n",
+      "Programaci\u00f3n Web",
+      "Programaci\u00f3n formal",
+      "Bases de datos",
+      "Backend"
+    ],
+    "sgdb_principal": "Mysql",
+    "sgdb_alternativo": "Postgresql",
+    "capacidad_maxima": 33,
+    "campers": []
+  },
+  {
+    "nombre": "Nueva Ruta",
+    "cursos": [
+      "Fundamentos de programaci\u00f3n",
+      "Programaci\u00f3n Web",
+      "Programaci\u00f3n formal",
+      "Bases de datos",
+      "Backend"
+    ],
+    "sgdb_principal": "Mysql",
+    "sgdb_alternativo": "Postgresql",
+    "capacidad_maxima": 33,
+    "campers": []
+  },
+  {
+    "nombre": "Nueva Ruta",
+    "cursos": [
+      "Fundamentos de programaci\u00f3n",
+      "Programaci\u00f3n Web",
+      "Programaci\u00f3n formal",
+      "Bases de datos",
+      "Backend"
+    ],
+    "sgdb_principal": "Mysql",
+    "sgdb_alternativo": "Postgresql",
+    "capacidad_maxima": 33,
+    "campers": []
+  },
+  {
+    "nombre": "Nueva Ruta",
+    "cursos": [
+      "Fundamentos de programaci\u00f3n",
+      "Programaci\u00f3n Web",
+      "Programaci\u00f3n formal",
+      "Bases de datos",
+      "Backend"
+    ],
+    "sgdb_principal": "Mysql",
+    "sgdb_alternativo": "Postgresql",
+    "capacidad_maxima": 33,
+    "campers": []
+  }
+]
