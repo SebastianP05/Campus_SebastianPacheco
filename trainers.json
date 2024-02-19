@@ -1,0 +1,6 @@
+[
+    {"ID": "123456789", "Nombre": "Juan Mariño", "Estado": "Activo"},
+    {"ID": "616765423", "Nombre": "Carlos Duarte","Estado": "Activo"},
+    {"ID": "313683755", "Nombre": "Silvia Moreno","Estado": "Retirado"},
+    {"ID": "381768977", "Nombre": "Sandra Grande","Estado": "Activo"}
+]

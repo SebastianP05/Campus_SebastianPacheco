@@ -1,4 +1,4 @@
-
+import json
 def main_menu():
 
     print("********************************************")
@@ -102,8 +102,13 @@ def menu_coordinador():
         accion = int(input("¿Qué deseas hacer?\n" +
                            "\n1. Cambiar estado del camper.\n" +
                            "2. Calificacion camper.\n" +
-                           "3. Salir al menu principal."))
+                           "3. Consultar campers de riesgo alto" +
+                           "4. Listar campers inscritos." +
+                           "5. Listas campers aprobados." +
+                           "6. Listar trainers activos." +
+                           "7. Salir al menú principal.\n"))
         if accion == 1:
+
             print("******************************")
             id_camper = input("Ingrese el ID del camper que desea gestionar: ")
             print("**********************************************************")
@@ -113,18 +118,60 @@ def menu_coordinador():
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break    
+
         elif accion == 2:
+
             id_camper_a_calificar = input("Ingrese el ID del camper a calificar: ")
             nombre_archivo_campers = 'campers.json'
             nombre_archivo_notas = 'notas.json'
             calificar_campers(id_camper_a_calificar, nombre_archivo_campers, nombre_archivo_notas)
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
-                break    
+                break   
+
         elif accion == 3:
+
+            with open('campers.json', 'r') as file:
+                campers_list = json.load(file)
+            consultar_campers_riesgo_alto(campers_list) 
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break
+
+        elif accion == 4:
+            with open('campers.json', 'r') as file:
+                campers_list = json.load(file)
+            listar_campers_inscritos(campers_list)
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break
         
+        elif accion == 5:
+            with open('campers.json', 'r') as file:
+                campers_list = json.load(file)
+            listar_campers_aprobados_inicial(campers_list)
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break
+        elif accion == 6:
+            with open('trainers.json', 'r') as file:
+                trainers_list = json.load(file)
+            listar_trainers_activos(trainers_list)
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu!='si':
+                break
+        elif accion == 7:
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break
+        else: 
+            print ("Selecciona una opción valida")
+            
+        
+
 from Coordinador import gestionar_y_guardar_estado_camper
 from Coordinador import calificar_campers
+from Coordinador import consultar_campers_riesgo_alto
+from Coordinador import listar_campers_inscritos
+from Coordinador import listar_campers_aprobados_inicial
+from Coordinador import listar_trainers_activos

@@ -97,4 +97,45 @@ def calificar_campers(id_camper, nombre_archivo_campers, nombre_archivo_notas):
         print(f"No se encontró un camper con el ID {id_camper} en el archivo de campers.")
 
 
+def consultar_campers_riesgo_alto(campers):
+    campers_riesgo_alto = [camper for camper in campers if camper['promedio_ponderado'] < 60]
+    
+    if not campers_riesgo_alto:
+        print("No hay campers en riesgo alto.")
+    else:
+        print("Campers en riesgo alto:")
+        for camper in campers_riesgo_alto:
+            print(f"- {camper['nombre']} (ID: {camper['id']})")
+
+def listar_campers_inscritos(campers):
+
+    campers_inscritos = [camper for camper in campers if camper['estado_modulo'] == 'Inscrito']
+    print("Campers inscritos:")
+    for camper in campers_inscritos:
+        print(f"- {camper['nombre']} (ID: {camper['id']})")
+
+def listar_campers_aprobados_inicial(campers):
+    campers_aprobados_inicial = [camper for camper in campers if camper['estado_modulo'] == 'Aprobado Inicial']
+    print("Campers que aprobaron el examen inicial:")
+    for camper in campers_aprobados_inicial:
+        print(f"- {camper['nombre']} (ID: {camper['id']})")
+
+def listar_trainers_activos(trainers):
+    trainers_activos = [trainer for trainer in trainers if trainer['Estado'] == 'Activo']
+    print("Trainers activos:")
+    for trainer in trainers_activos:
+        print(f"- {trainer['Nombre']} (ID: {trainer['id']})")
+
+
+# Ejemplo de uso
+with open('campers.json', 'r') as file:
+    campers_list = json.load(file)
+
+with open('trainers.json', 'r') as file:
+    trainers_list = json.load(file)
+
+listar_campers_aprobados_inicial(campers_list)
+listar_trainers_activos(trainers_list)
+
+
 
