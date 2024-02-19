@@ -49,10 +49,13 @@ def gestionar_y_guardar_estado_camper(id_camper, nombre_archivo):
     with open(nombre_archivo, 'w') as file:
         json.dump(campers, file)
 
-def calificar_campers(id_camper, nombre_archivo):
-    nombre_archivo='campers.json'
-    with open(nombre_archivo, 'r') as file:
-        campers = json.load(file)
+import json
+
+import json
+
+def calificar_campers(id_camper, nombre_archivo_campers, nombre_archivo_notas):
+    with open(nombre_archivo_campers, 'r') as file_campers:
+        campers = json.load(file_campers)
 
     camper_encontrado = None
     for camper in campers:
@@ -63,7 +66,9 @@ def calificar_campers(id_camper, nombre_archivo):
     if camper_encontrado is not None:
         
         if camper_encontrado['Estado'] == 'Aprobado':
+            print("***************************")
             print("El camper ya está aprobado.")
+            print("***************************")
             return
 
         nota_teoria = float(input("Ingrese la nota teórica del camper: "))
@@ -73,14 +78,23 @@ def calificar_campers(id_camper, nombre_archivo):
 
         if promedio >= 60:
             camper_encontrado['Estado'] = 'Aprobado'
+            print("****************************************************")
             print("El camper ha sido aprobado con un promedio de", promedio)
+            print("****************************************************")
         else:
+            print("*************************************************************")
             print("El camper no ha alcanzado el promedio necesario para aprobar.")
+            print("*************************************************************")
+
+        with open(nombre_archivo_campers, 'w') as file_campers:
+            json.dump(campers, file_campers)
+
+        with open(nombre_archivo_notas, 'a') as file_notas:
+            json.dump({'ID': id_camper, 'NotaTeoria': nota_teoria, 'NotaPractica': nota_practica}, file_notas)
+            file_notas.write('\n')
 
     else:
-        print(f"No se encontró un camper con el ID {id_camper}.")
+        print(f"No se encontró un camper con el ID {id_camper} en el archivo de campers.")
 
-    with open(nombre_archivo, 'w') as file:
-        json.dump(campers, file)
 
 

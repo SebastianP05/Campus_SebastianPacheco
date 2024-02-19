@@ -1,4 +1,4 @@
-from Camper import registrar_camper
+import json
 
 def main_menu():
 
@@ -57,9 +57,44 @@ def menu_camper():
         else:
             print("Opción no válida. Inténtalo de nuevo.")
 
-#def menu_trainer():#
+def menu_trainer():
+
+    print("********************")
+    print("Bienvenido Trainer.")
+    print("********************")
+    while True:
+
+        accion = int(input("¿Qué deseas hacer?\n" +
+                           "\n1. Agregar rutas y asignar camper.\n" +
+                           "2. Evaluar campers.\n"))
+        if accion == 1:
+              
+                print("********************************")
+                print("Haz añadido estas rutas nuevas: " +
+                      "********************************"
+                      "- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)" +
+                      "- Programación Web (HTML, CSS y Bootstrap)." +
+                      "- Programación formal (Java, JavaScript, C#)." + 
+                      "- Bases de datos (Mysql, MongoDb y Postgresql)." +
+                      "- Backend (NetCore, Spring Boot, NodeJS y Express)."
+                      )
+                print("********************************")
+                agregar_rutas_y_asignar_campers()
+                volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+                if volver_al_menu != 'si':
+                    break
+        elif accion == 2:
+                
+                evaluar_campers(campers_list)
+                
+with open('campers.json', 'r') as file:
+                campers_list = json.load(file)
+
+from Trainer import  agregar_rutas_y_asignar_campers
+from Trainer import evaluar_campers
 
 def menu_coordinador():
+
     print("***********************")
     print("Bienvenido Coordinador.")
     print("***********************")
@@ -78,10 +113,15 @@ def menu_coordinador():
             if volver_al_menu != 'si':
                 break    
         elif accion == 2:
-            calificar_campers('ID_DEL_CAMPER', 'campers.json')
+            id_camper_a_calificar = input("Ingrese el ID del camper a calificar: ")
+            nombre_archivo_campers = 'campers.json'
+            nombre_archivo_notas = 'notas.json'
+            calificar_campers(id_camper_a_calificar, nombre_archivo_campers, nombre_archivo_notas)
+            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            if volver_al_menu != 'si':
+                break    
         
-        elif accion == 3:
-            print('mondongo')
+
             
 from Coordinador import gestionar_y_guardar_estado_camper
 from Coordinador import calificar_campers
