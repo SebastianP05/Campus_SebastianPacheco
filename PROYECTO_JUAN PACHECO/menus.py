@@ -70,8 +70,8 @@ def menu_trainer():
         if accion == 1:
               
                 print("********************************")
-                print("Haz añadido estas rutas nuevas: " +
-                      "********************************"
+                print("Haz añadido estas rutas nuevas:\n " +
+                      "********************************\n" +
                       "- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)\n" +
                       "- Programación Web (HTML, CSS y Bootstrap).\n" +
                       "- Programación formal (Java, JavaScript, C#).\n" + 
@@ -133,7 +133,9 @@ def menu_coordinador():
 
             with open('campers.json', 'r') as file:
                 campers_list = json.load(file)
+            print("*******************************")
             consultar_campers_riesgo_alto(campers_list) 
+            print("*******************************")
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break
@@ -141,7 +143,9 @@ def menu_coordinador():
         elif accion == 4:
             with open('campers.json', 'r') as file:
                 campers_list = json.load(file)
+            print("*******************************")
             listar_campers_inscritos(campers_list)
+            print("*******************************")
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break
@@ -149,7 +153,9 @@ def menu_coordinador():
         elif accion == 5:
             with open('campers.json', 'r') as file:
                 campers_list = json.load(file)
+            print("*******************************")
             listar_campers_aprobados_inicial(campers_list)
+            print("*******************************")
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu != 'si':
                 break
