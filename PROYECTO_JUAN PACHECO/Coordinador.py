@@ -109,33 +109,22 @@ def consultar_campers_riesgo_alto(campers):
 
 def listar_campers_inscritos(campers):
 
-    campers_inscritos = [camper for camper in campers if camper['estado_modulo'] == 'Inscrito']
+    campers_inscritos = [camper for camper in campers if camper['Estado'] == 'Inscrito']
     print("Campers inscritos:")
     for camper in campers_inscritos:
-        print(f"- {camper['nombre']} (ID: {camper['id']})")
+        print(f"- {camper['Nombre']} (ID: {camper['ID']})")
 
 def listar_campers_aprobados_inicial(campers):
-    campers_aprobados_inicial = [camper for camper in campers if camper['estado_modulo'] == 'Aprobado Inicial']
+    campers_aprobados_inicial = [camper for camper in campers if camper['Estado'] == 'Aprobado']
     print("Campers que aprobaron el examen inicial:")
     for camper in campers_aprobados_inicial:
-        print(f"- {camper['nombre']} (ID: {camper['id']})")
+        print(f"- {camper['Nombre']} (ID: {camper['ID']})")
 
 def listar_trainers_activos(trainers):
     trainers_activos = [trainer for trainer in trainers if trainer['Estado'] == 'Activo']
     print("Trainers activos:")
     for trainer in trainers_activos:
-        print(f"- {trainer['Nombre']} (ID: {trainer['id']})")
-
-
-# Ejemplo de uso
-with open('campers.json', 'r') as file:
-    campers_list = json.load(file)
-
-with open('trainers.json', 'r') as file:
-    trainers_list = json.load(file)
-
-listar_campers_aprobados_inicial(campers_list)
-listar_trainers_activos(trainers_list)
+        print(f"- {trainer['Nombre']} (ID: {trainer['ID']})")
 
 
 

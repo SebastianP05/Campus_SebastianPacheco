@@ -72,10 +72,10 @@ def menu_trainer():
                 print("********************************")
                 print("Haz añadido estas rutas nuevas: " +
                       "********************************"
-                      "- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)" +
-                      "- Programación Web (HTML, CSS y Bootstrap)." +
-                      "- Programación formal (Java, JavaScript, C#)." + 
-                      "- Bases de datos (Mysql, MongoDb y Postgresql)." +
+                      "- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)\n" +
+                      "- Programación Web (HTML, CSS y Bootstrap).\n" +
+                      "- Programación formal (Java, JavaScript, C#).\n" + 
+                      "- Bases de datos (Mysql, MongoDb y Postgresql).\n" +
                       "- Backend (NetCore, Spring Boot, NodeJS y Express)."
                       )
                 print("********************************")
@@ -102,11 +102,11 @@ def menu_coordinador():
         accion = int(input("¿Qué deseas hacer?\n" +
                            "\n1. Cambiar estado del camper.\n" +
                            "2. Calificacion camper.\n" +
-                           "3. Consultar campers de riesgo alto" +
-                           "4. Listar campers inscritos." +
-                           "5. Listas campers aprobados." +
-                           "6. Listar trainers activos." +
-                           "7. Salir al menú principal.\n"))
+                           "3. Consultar campers de riesgo alto\n" +
+                           "4. Listar campers inscritos.\n" +
+                           "5. Listas campers aprobados.\n" +
+                           "6. Listar trainers activos.\n" +
+                           "7. Salir al menú principal."))
         if accion == 1:
 
             print("******************************")
@@ -156,12 +156,16 @@ def menu_coordinador():
         elif accion == 6:
             with open('trainers.json', 'r') as file:
                 trainers_list = json.load(file)
+            print("*****************************")
             listar_trainers_activos(trainers_list)
+            print("*****************************")
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
             if volver_al_menu!='si':
                 break
         elif accion == 7:
+            print("*****************************")
             volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+            print("*****************************")
             if volver_al_menu != 'si':
                 break
         else: 
