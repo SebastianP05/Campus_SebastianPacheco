@@ -1,3 +1,0 @@
-import gestion_animales
-
-gestion_animales.mostrarTodosLosAnimales()
