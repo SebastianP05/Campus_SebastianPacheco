@@ -1,0 +1,13 @@
+[
+    {
+        "numero": "123",
+        "entrada": "Empanadas Mini",
+        "cantidadEnt": 1,
+        "plato_fuerte": "Lechona",
+        "cantidadPF": 2,
+        "bebida": "Vino",
+        "cantidadBebida": 1,
+        "Estado": "Creado",
+        "Pagado": "no"
+    }
+]

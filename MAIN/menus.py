@@ -1,187 +1,202 @@
 import json
+
 def main_menu():
 
-    print("********************************************")
-    print("Bienvenido a CAMPUSLANDS.")
-    print("**********************************************")
-    print("Por el momento solo tenemos 3 roles de usuario")
-    print("Presiona 4 si deseas salir.")
-    print("""**********************************************      
-        1. Camper.
-        2. Trainer.
-        3. Coordinador.
-        4. Salir   
-          """)
-    print("********************************************")
+    try:
     
-    rol = int(input("Por favor elige tu rol: "))
+        print("********************************************")
+        print("Bienvenido a tu restaurante Monopollito.")
+        print("**********************************************")
+        print("Por el momento solo tenemos  estas opciones:")
+        print("**********************************************")
 
-    if rol == 1:
-        menu_camper()
-    elif rol == 2:
-        menu_trainer()
-    elif rol == 3:
-        menu_coordinador()
-    elif rol == 4:
-        salir = input("¿Estás seguro que deseas salir? (Sí/No): ").lower()
-        if salir != 'no':
-            main_menu()
-    else:
-        print('********************************')
-        print('Error, elige una opción válida.')
-        print('********************************')
-        return
+        while True:
+            opcion = int(input("\n1. Creación de pedidos.\n" +
+                            "2. Información de pedidos.\n"+
+                            "3. Gestion de pedidos.\n" +
+                            "4. Salir.\n"
+                            "\n¿A qué opcion deseas acceder?\n"
+                            ":"
+                            ))
+            if opcion == 1:
+                creacion_de_pedidos()
+            elif opcion == 2:
+                info_pedido()
+            elif opcion == 3:
+                gestion_pedido()
+            elif opcion == 4:
+                salir = input("¿Quieres salir del programa? (Sí/No): ").lower()
+                if salir=='si':
+                    break
+                    
+            else:
+                print ("************************************")
+                print("Opción no válida. Inténtalo de nuevo.")
+                print ("************************************")
+                
+    except KeyboardInterrupt:
+        print("******************************************")
+        print("No haz seleccionada ninguna opción valida.")
+        print("******************************************")
+        main_menu()    
+                
+    
 
-from Camper import registrar_camper
-
-def menu_camper():
-    print("********************")
-    print("Bienvenido Camper.")
-    print("********************")
-    while True:
-        accion = int(input("¿Qué deseas hacer?\n" +
-                           "\n1. Registrarte.\n" +
-                           "2. Salir al menú principal.\n"))
-        if accion == 1:
-
-            print("*********************************")
-            campers_list = []
-            registrar_camper(campers_list, "campers.json")
-            print("************************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break
-        elif accion == 2:
-            main_menu()
-        else:
-            print("Opción no válida. Inténtalo de nuevo.")
-
-def menu_trainer():
-
-    print("********************")
-    print("Bienvenido Trainer.")
-    print("********************")
-    while True:
-
-        accion = int(input("¿Qué deseas hacer?\n" +
-                           "\n1. Agregar rutas y asignar camper.\n" +
-                           "2. Evaluar campers.\n" +
-                           "3. Salir al menú principal.\n"))
-        if accion == 1:
-              
-                print("********************************")
-                print("Haz añadido estas rutas nuevas:\n " +
-                      "********************************\n" +
-                      "- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)\n" +
-                      "- Programación Web (HTML, CSS y Bootstrap).\n" +
-                      "- Programación formal (Java, JavaScript, C#).\n" + 
-                      "- Bases de datos (Mysql, MongoDb y Postgresql).\n" +
-                      "- Backend (NetCore, Spring Boot, NodeJS y Express)."
-                      )
-                print("********************************")
-                agregar_rutas_y_asignar_campers()
+def creacion_de_pedidos():
+    
+    try:
+        
+        print("***********************************")
+        print("Bienvenido a tu creador de pedidos.")
+        print("***********************************")
+            
+        while True:
+            accion = int(input("¿Qué deseas hacer?\n" +
+                            "\n1. Ver el menú.\n" +
+                            "2. Crear un pedido.\n" +
+                            "3. Salir al menú principal.\n"))
+            
+            if accion == 1:
+                print("**********************************************")
+                ver_menu()
+                print("************************************")
                 volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
                 if volver_al_menu != 'si':
                     break
-        elif accion == 2:
-                evaluar_campers()
-        elif accion == 3:
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break
-                
-from Trainer import  agregar_rutas_y_asignar_campers
-from Trainer import evaluar_campers
-
-def menu_coordinador():
-
-    print("***********************")
-    print("Bienvenido Coordinador.")
-    print("***********************")
-    while True:
-        accion = int(input("¿Qué deseas hacer?\n" +
-                           "\n1. Cambiar estado del camper.\n" +
-                           "2. Calificacion camper.\n" +
-                           "3. Consultar campers de riesgo alto\n" +
-                           "4. Listar campers inscritos.\n" +
-                           "5. Listas campers aprobados.\n" +
-                           "6. Listar trainers activos.\n" +
-                           "7. Salir al menú principal."))
-        if accion == 1:
-
-            print("******************************")
-            id_camper = input("Ingrese el ID del camper que desea gestionar: ")
-            print("**********************************************************")
-            nombre_archivo='campers.json'
-            gestionar_y_guardar_estado_camper(id_camper, nombre_archivo)
-            print("******************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break    
-
-        elif accion == 2:
-
-            id_camper_a_calificar = input("Ingrese el ID del camper a calificar: ")
-            nombre_archivo_campers = 'campers.json'
-            nombre_archivo_notas = 'notas.json'
-            calificar_campers(id_camper_a_calificar, nombre_archivo_campers, nombre_archivo_notas)
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break   
-
-        elif accion == 3:
-
-            with open('campers.json', 'r') as file:
-                campers_list = json.load(file)
-            print("*******************************")
-            consultar_campers_riesgo_alto(campers_list) 
-            print("*******************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break
-
-        elif accion == 4:
-            with open('campers.json', 'r') as file:
-                campers_list = json.load(file)
-            print("*******************************")
-            listar_campers_inscritos(campers_list)
-            print("*******************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break
-        
-        elif accion == 5:
-            with open('campers.json', 'r') as file:
-                campers_list = json.load(file)
-            print("*******************************")
-            listar_campers_aprobados_inicial(campers_list)
-            print("*******************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu != 'si':
-                break
-        elif accion == 6:
-            with open('trainers.json', 'r') as file:
-                trainers_list = json.load(file)
-            print("*****************************")
-            listar_trainers_activos(trainers_list)
-            print("*****************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            if volver_al_menu!='si':
-                break
-        elif accion == 7:
-            print("*****************************")
-            volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
-            print("*****************************")
-            if volver_al_menu != 'si':
-                break
-        else: 
-            print ("Selecciona una opción valida")
             
-        
+            elif accion == 2:
+                print("*******************************************")
+                print("Para crear el pedido necesito estos datos:\n")
+                print("*******************************************")
+                pedidos=[]
+                nombre_archivo='pedidos.json'
+                crear_pedido(pedidos,nombre_archivo)
+                print("************************************")
+                volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+                if volver_al_menu != 'si':
+                    break
+            
+            elif accion == 3:
+                main_menu()
+            else:
+                print("Opción no válida. Inténtalo de nuevo.")
+                
+    except KeyboardInterrupt:
+        print("************************************")
+        print("Has interrumpido el proceso de pedidos.")
+        print("************************************")
+        main_menu()            
 
-from Coordinador import gestionar_y_guardar_estado_camper
-from Coordinador import calificar_campers
-from Coordinador import consultar_campers_riesgo_alto
-from Coordinador import listar_campers_inscritos
-from Coordinador import listar_campers_aprobados_inicial
-from Coordinador import listar_trainers_activos
+from creacion import ver_menu
+from creacion import crear_pedido
+
+def info_pedido():
+    
+    try:
+        
+        print("**********************************************")
+        print("Bienvenido, que quieres saber de tu pedido.")
+        print("**********************************************")
+            
+        while True:
+            accion = int(input("\n1. Ver el estado del pedido.\n" +
+                            "2. Consultar los pedidos creados.\n" +
+                            "3. Consultar los pedidos pagados.\n" +
+                            "4. Consultar los pedidos servidos.\n" +
+                            "0. Salir al menú principal.\n"))
+            
+            if accion == 1:
+                print("**********************************************")
+                #ver_menu()
+                
+            elif accion == 2:
+                
+                print("************************************")
+                pedidos=[]
+                consultar_pedidos_creados(pedidos)
+                volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+                if volver_al_menu != 'si':
+                    break
+                
+            elif accion == 3:
+                
+                print("************************************")
+                pedidos=[]
+                consultar_pedidos_pagados(pedidos)
+                volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+                if volver_al_menu!='si':
+                    break
+                
+            elif accion == 4:
+                
+                print("************************************")
+                pedidos=[]
+                consultar_pedidos_servidos(pedidos)
+                volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+                if volver_al_menu!='si':
+                    break
+                    
+            elif accion == 0:
+                main_menu()
+            else:
+                print("Opción no válida. Inténtalo de nuevo.")
+                
+    except Exception:
+        print ("************************************")
+        print("Error, intenta nuevamente.")
+        print ("************************************")
+
+from Informacion import consultar_pedidos_creados
+from Informacion import consultar_pedidos_pagados
+from Informacion import consultar_pedidos_servidos
+
+def gestion_pedido():
+    
+    try:
+        
+        print("**********************************************")
+        print("Bienvenido, que quieres hacer con tu pedido.")
+        print("**********************************************")
+            
+        while True:
+            accion = int(input("\n1. Cambiar el estado del pedido.\n" +
+                            "2. Pagar el pedido.\n" +
+                            "3. Salir al menú principal.\n"))
+            
+            if accion == 1:
+                
+                print("******************************")
+                numero = input("Ingrese el número del pedido que desea gestionar: ")
+                print("**********************************************************")
+                nombre_archivo='pedidos.json'
+                cambiar_estado(numero, nombre_archivo)
+                print("******************************")
+                volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+                if volver_al_menu != 'si':
+                        break    
+                
+            elif accion == 2:
+                
+                print("******************************")
+                numero = input("Ingrese el número del pedido que desea pagar: ")
+                print("**********************************************************")
+                nombre_archivo='pedidos.json'
+                pagar_pedido(numero, nombre_archivo)
+                volver_al_menu = input("¿Quieres volver al menú? (Sí/No): ").lower()
+                if volver_al_menu != 'si':
+                    break
+            
+            elif accion == 3:
+                main_menu()
+                
+            else:
+                print("Opción no válida. Inténtalo de nuevo.")
+                
+    except Exception:
+        print ("************************************")
+        print("Error, intenta nuevamente.")
+        print ("************************************")
+
+from gestion import cambiar_estado
+from gestion import pagar_pedido
+                
